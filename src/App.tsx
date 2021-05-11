@@ -20,7 +20,6 @@ import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
-
 /* Theme variables */
 import './theme/variables.css';
 import MainTabs from './pages/MainTabs';
@@ -36,7 +35,11 @@ import Tutorial from './pages/Tutorial';
 import HomeOrTutorial from './components/HomeOrTutorial';
 import { Schedule } from "./models/Schedule";
 import RedirectToLogin from './components/RedirectToLogin';
-
+import Dashboard from './pages/Dashboard';
+declare global {
+  interface Window { recaptchaVerifier: any;
+  confirmationResult:any; }
+}
 const App: React.FC = () => {
   return (
     <AppContextProvider>
@@ -86,13 +89,14 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, 
                 <Route path="/signup" component={Signup} />
                 <Route path="/support" component={Support} />
                 <Route path="/tutorial" component={Tutorial} />
+                <Route path="/dashboard" component={Dashboard} />
                 <Route path="/logout" render={() => {
                   return <RedirectToLogin
                     setIsLoggedIn={setIsLoggedIn}
                     setUsername={setUsername}
                   />;
                 }} />
-                <Route path="/" component={HomeOrTutorial} exact />
+                <Route path="/" component={Signup} exact />
               </IonRouterOutlet>
             </IonSplitPane>
           </IonReactRouter>
