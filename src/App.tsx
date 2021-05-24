@@ -36,6 +36,7 @@ import HomeOrTutorial from './components/HomeOrTutorial';
 import { Schedule } from "./models/Schedule";
 import RedirectToLogin from './components/RedirectToLogin';
 import Dashboard from './pages/Dashboard';
+import SelectFour from './pages/SelectFour'
 declare global {
   interface Window { recaptchaVerifier: any;
   confirmationResult:any; }
@@ -90,6 +91,7 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, 
                 <Route path="/support" component={Support} />
                 <Route path="/tutorial" component={Tutorial} />
                 <Route path="/dashboard" component={Dashboard} />
+                <Route path="/selectfour" component={SelectFour} />
                 <Route path="/logout" render={() => {
                   return <RedirectToLogin
                     setIsLoggedIn={setIsLoggedIn}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText, IonModal, IonAlert } from '@ionic/react';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText, IonModal, IonAlert, IonCard, IonCardContent, IonRouterLink } from '@ionic/react';
 import './Login.scss';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import { connect } from '../data/connect';
@@ -137,7 +137,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
               </p>
             </IonText>}
           </IonList>
-          <div id="recaptcha-container"></div>
+          <div style={{margin:'10px'}} id="recaptcha-container"></div>
           <IonRow>
             <IonCol>
               <IonButton type="submit" expand="block" id="sign-in-button">Send OTP</IonButton>
@@ -146,14 +146,33 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
         </form>
         <IonModal isOpen={showModal} cssClass='my-custom-class'>
           <IonContent>
-        <IonItem>
-              <IonLabel position="stacked" color="primary">Enter your OTP</IonLabel>
-              <IonInput name="otp" type="number" value={password} onIonChange={e => {
-                setPassword(e.detail.value!);
-                setPasswordError(false);
-              }}>
-              </IonInput>
+          <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton></IonMenuButton>
+          </IonButtons>
+          <IonTitle>OTP</IonTitle>
+        </IonToolbar>
+        <IonCard>
+          <IonCardContent>
+            <IonItem>
+              <IonText>
+                +91 {username}
+              </IonText>
+              
+            </IonItem>
+            <IonItem>
+                <IonLabel position="stacked" color="primary">Enter your OTP</IonLabel>
+                <IonInput name="otp" type="number" value={password} maxlength={1} onIonChange={e => {
+                  setPassword(e.detail.value!);
+                  setPasswordError(false);
+                }}>
+                </IonInput>
             </IonItem> 
+            <IonButton expand="block" onClick={() => otpSubmit(password)}>Submit</IonButton>
+
+          </IonCardContent>
+        </IonCard>
+            
             </IonContent>
         <IonAlert
           isOpen={showAlert1}
@@ -165,7 +184,6 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
           message={'Enter your details to continue'}
           buttons={['OK']}
         />
-        <IonButton onClick={() => otpSubmit(password)}>Submit</IonButton>
       </IonModal>
       </IonContent>
 
