@@ -37,10 +37,25 @@ import { Schedule } from "./models/Schedule";
 import RedirectToLogin from './components/RedirectToLogin';
 import Dashboard from './pages/Dashboard';
 import SelectFour from './pages/SelectFour'
+import firebase from "firebase/app";
+import BookSlot from './pages/BookSlot';
+
 declare global {
   interface Window { recaptchaVerifier: any;
   confirmationResult:any; }
 }
+var firebaseConfig = {
+  apiKey: "AIzaSyDEcMIB14K3Kal3V7hrd15lRhYj2Ceudqc",
+  authDomain: "waste-management-17f9c.firebaseapp.com",
+  projectId: "waste-management-17f9c",
+  storageBucket: "waste-management-17f9c.appspot.com",
+  messagingSenderId: "776025916617",
+  appId: "1:776025916617:web:2ead70a8d3b56de1f83918",
+  measurementId: "G-6HJ9X9GLWN"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 const App: React.FC = () => {
   return (
     <AppContextProvider>
@@ -92,13 +107,15 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, 
                 <Route path="/tutorial" component={Tutorial} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/selectfour" component={SelectFour} />
+                <Route path="/bookslot" component={BookSlot} />
+
                 <Route path="/logout" render={() => {
                   return <RedirectToLogin
                     setIsLoggedIn={setIsLoggedIn}
                     setUsername={setUsername}
                   />;
                 }} />
-                <Route path="/" component={Signup} exact />
+                <Route path="/" component={BookSlot} exact />
               </IonRouterOutlet>
             </IonSplitPane>
           </IonReactRouter>

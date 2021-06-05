@@ -12,17 +12,6 @@ interface DispatchProps {
   setIsLoggedIn: typeof setIsLoggedIn;
   setUsername: typeof setUsername;
 }
-var firebaseConfig = {
-  apiKey: "AIzaSyDEcMIB14K3Kal3V7hrd15lRhYj2Ceudqc",
-  authDomain: "waste-management-17f9c.firebaseapp.com",
-  projectId: "waste-management-17f9c",
-  storageBucket: "waste-management-17f9c.appspot.com",
-  messagingSenderId: "776025916617",
-  appId: "1:776025916617:web:2ead70a8d3b56de1f83918",
-  measurementId: "G-6HJ9X9GLWN"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
 interface LoginProps extends OwnProps,  DispatchProps { }
 

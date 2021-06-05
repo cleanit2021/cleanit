@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText } from '@ionic/react';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText, IonTextarea, IonToggle } from '@ionic/react';
 import './Login.scss';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import { connect } from '../data/connect';
@@ -18,6 +18,10 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [age,setAge] = useState('');
+  const [coord,setCoord] = useState('');
+  const [location,setLocation] = useState('');
+  const [gpsEnable,setGpsEnabled] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -38,27 +42,25 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
       history.push('/tabs/schedule', {direction: 'none'});
     }
   };
-
+  const getLocation = () => {
+    // api.get('http://api.positionstack.com/v1/forward?access_key=bce98239614aaa6f7954015a64f6bb76')
+  }
   return (
-    <IonPage id="login-page">
+    <IonPage id="details-page">
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
-          <IonTitle>Login</IonTitle>
+          <IonTitle>Details</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
 
-        <div className="login-logo">
-          <img src="assets/img/appicon.svg" alt="Ionic logo" />
-        </div>
-
         <form noValidate onSubmit={login}>
           <IonList>
             <IonItem>
-              <IonLabel position="stacked" color="primary">Username</IonLabel>
+              <IonLabel position="stacked" color="primary">Name</IonLabel>
               <IonInput name="username" type="text" value={username} spellCheck={false} autocapitalize="off" onIonChange={e => setUsername(e.detail.value!)}
                 required>
               </IonInput>
@@ -66,30 +68,43 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
 
             {formSubmitted && usernameError && <IonText color="danger">
               <p className="ion-padding-start">
-                Username is required
+                Name is required
               </p>
             </IonText>}
 
+            
             <IonItem>
-              <IonLabel position="stacked" color="primary">Password</IonLabel>
-              <IonInput name="password" type="password" value={password} onIonChange={e => setPassword(e.detail.value!)}>
+              <IonLabel position="stacked" color="primary">Age</IonLabel>
+              <IonInput name="age" type="number" value={age} spellCheck={false} autocapitalize="off" onIonChange={e => setAge(e.detail.value!)}
+                required>
               </IonInput>
             </IonItem>
-
-            {formSubmitted && passwordError && <IonText color="danger">
-              <p className="ion-padding-start">
-                Password is required
-              </p>
-            </IonText>}
+            <IonItem>
+              <IonLabel position="stacked" color="primary">Use GPS</IonLabel>
+              <IonToggle checked={gpsEnable} onIonChange={e => setGpsEnabled(e.detail.checked)} />
+            
+            </IonItem>
+            { !gpsEnable && 
+            <IonItem>
+              <IonLabel position="stacked" color="primary">Location</IonLabel>
+              <IonTextarea name="text" value={location} spellCheck={false} autocapitalize="off" onIonChange={e => setLocation(e.detail.value!)}
+                required>
+              </IonTextarea>
+            </IonItem>}
+            { gpsEnable && 
+            <IonItem>
+              <IonLabel position="stacked" color="primary">Location</IonLabel>
+              <IonButton color="primary" onClick={()=>{getLocation()}}>Use Current Location</IonButton>
+            </IonItem>}
           </IonList>
 
           <IonRow>
             <IonCol>
-              <IonButton type="submit" expand="block">Login</IonButton>
+              <IonButton type="submit" expand="block" onClick={(e)=>login(e)}>Submit</IonButton>
             </IonCol>
-            <IonCol>
+            {/* <IonCol>
               <IonButton routerLink="/signup" color="light" expand="block">Signup</IonButton>
-            </IonCol>
+            </IonCol> */}
           </IonRow>
         </form>
 
