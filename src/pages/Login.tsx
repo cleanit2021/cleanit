@@ -32,15 +32,15 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
     if(!username) {
       setUsernameError(true);
     }
-    if(!password) {
-      setPasswordError(true);
-    }
+   
 
     if(username && password) {
       await setIsLoggedIn(true);
       await setUsernameAction(username);
-      history.push('/tabs/schedule', {direction: 'none'});
+      history.push('/dashboard', {direction: 'none'});
     }
+    history.push('/dashboard', {direction: 'none'});
+
   };
   const getLocation = () => {
     // api.get('http://api.positionstack.com/v1/forward?access_key=bce98239614aaa6f7954015a64f6bb76')

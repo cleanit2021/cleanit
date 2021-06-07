@@ -2,7 +2,7 @@
   "name": "ionic-react-conference-app",
   "version": "0.0.1",
   "private": true,
-  
+  "homepage":"https://cleanit2021.github.io/cleanit/",
   "dependencies": {
     "@capacitor-community/date-picker": "^0.2.3",
     "@capacitor/android": "^2.4.7",
@@ -38,7 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "PUBLIC_URL='cleanit' ionic build --prod",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {

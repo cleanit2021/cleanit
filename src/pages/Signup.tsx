@@ -47,8 +47,11 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
     if(username) {
       // window.recaptchaVerifier = 
       
-      firebase.auth().signInWithPhoneNumber('+91'+username,window.recaptchaVerifier)
-      .then(async(confirmationResult) => {
+      firebase.auth().signInWithPhoneNumber(
+        '+91'+username,
+        window.recaptchaVerifier
+        )
+        .then(async(confirmationResult) => {
       console.log(confirmationResult,typeof(confirmationResult))
       window.confirmationResult=confirmationResult
       setShowModal(true)
@@ -64,6 +67,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
   const otpSubmit = async(otp:string) => {
     setShowModal(false)
     // if(confirmationRes!=={})
+    
     window.confirmationResult.confirm(otp).then(async(result:any) => {
       // User signed in successfully.
       
@@ -71,7 +75,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
       await setIsLoggedIn(true);
       await setUsernameAction(user);
       setShowAlert1(true)
-      history.push('/tabs/schedule', {direction: 'none'});
+      history.push('/login', {direction: 'none'});
       // ...
     }).catch((error:any) => {
       // User couldn't sign in (bad verification code?)
@@ -91,7 +95,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
       <IonContent>
 
         <div className="login-logo">
-          <img src="assets/img/appicon.svg" alt="Ionic logo" />
+          <img src="data:image/png;base64,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" alt="Ionic logo" />
         </div>
           <form noValidate onSubmit={login}>
           <IonList>

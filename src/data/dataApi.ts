@@ -4,7 +4,7 @@ import { Speaker } from '../models/Speaker';
 import { Location } from '../models/Location';
 
 const { Storage } = Plugins;
-
+const cleanit = 'cleanit'
 const dataUrl = '/assets/data/data.json';
 const locationsUrl = '/assets/data/locations.json';
 
@@ -14,8 +14,8 @@ const USERNAME = 'username';
 
 export const getConfData = async () => {
   const response = await Promise.all([
-    fetch(dataUrl),
-    fetch(locationsUrl)]);
+    fetch(cleanit+dataUrl),
+    fetch(cleanit+locationsUrl)]);
   const responseData = await response[0].json();
   const schedule = responseData.schedule[0] as Schedule;
   const sessions = parseSessions(schedule);
