@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import {dashboard} from './dashboardData'
+import {dashboard,dashboard_data} from './dashboardData'
 import { IonToolbar, IonContent, IonPage, IonButtons, IonTitle, IonMenuButton, IonSegment, IonSegmentButton, IonButton, IonIcon, IonSearchbar, IonRefresher, IonRefresherContent, IonToast, IonModal, IonHeader, getConfig, IonCard, IonCardHeader, IonGrid, IonRow, IonCol, IonCardContent } from '@ionic/react';
 import { options, search } from 'ionicons/icons';
 
@@ -13,7 +13,8 @@ import * as selectors from '../data/selectors';
 import { connect } from '../data/connect';
 import { setSearchText } from '../data/sessions/sessions.actions';
 import { Schedule } from '../models/Schedule';
-
+import { Card } from './Card';
+import {DashboardItems} from './DashboardItems'
 interface OwnProps { }
 
 interface StateProps {
@@ -137,8 +138,9 @@ const cardstyle = {
             </div>
             )} 
         </IonGrid> */}
-
-        {dashboard.dashboard.heading.map(
+        <DashboardItems prop={dashboard_data}/>
+        {/* <Card img='https://ionicframework.com/docs/demos/api/card/madison.jpg' text="Image Card"/> */}
+        {false && dashboard.dashboard.heading.map(
             i => 
             <IonCard key={i.title}>
                 <IonCardHeader>{i.title}</IonCardHeader>
@@ -147,8 +149,9 @@ const cardstyle = {
                         <IonRow>
                         {i.data.map(item => 
                             <IonCol key={item.title}>
-                                <IonIcon name="albums"/>
-                                {item.title}
+                                {/* <IonIcon name="albums"/>
+                                {item.title} */}
+                                <Card sub="hello" img='https://ionicframework.com/docs/demos/api/card/madison.jpg' text={item.title}/>
                             </IonCol>
                             )}
                         </IonRow>
@@ -156,6 +159,7 @@ const cardstyle = {
                 </IonCardContent>
             </IonCard>
         )}
+
         <IonRefresher slot="fixed" ref={ionRefresherRef} onIonRefresh={doRefresh}>
           <IonRefresherContent />
         </IonRefresher>

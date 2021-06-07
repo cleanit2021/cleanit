@@ -32,6 +32,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
 
 // })
   const login = async (e: React.FormEvent) => {
+
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
 
     e.preventDefault();
@@ -47,10 +48,9 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
       // window.recaptchaVerifier = 
       
       firebase.auth().signInWithPhoneNumber('+91'+username,window.recaptchaVerifier)
-    .then(async(confirmationResult) => {
+      .then(async(confirmationResult) => {
       console.log(confirmationResult,typeof(confirmationResult))
       window.confirmationResult=confirmationResult
-
       setShowModal(true)
      
     }).catch((error) => {

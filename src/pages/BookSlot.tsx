@@ -4,7 +4,13 @@ import './Login.scss';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import { connect } from '../data/connect';
 import { RouteComponentProps } from 'react-router';
+import {DatePicker,DatePickerPlugin,DatePickerMode,DatePickerPluginWeb, DatePickerPluginInterface} from '@capacitor-community/date-picker'
 import { Plugins, CameraResultType, CameraSource ,CameraPhoto} from '@capacitor/core';
+import { DatePickerOriginal } from '@ionic-native/date-picker';
+import firebase from 'firebase/app'
+import 'firebase/firestore';
+import {useCollection} from 'react-firebase-hooks/firestore'
+
 const { Camera } = Plugins;
 interface OwnProps extends RouteComponentProps {}
 
@@ -12,7 +18,7 @@ interface DispatchProps {
   setIsLoggedIn: typeof setIsLoggedIn;
   setUsername: typeof setUsername;
 }
-
+// const db = firebase.firestore()
 interface LoginProps extends OwnProps,  DispatchProps { }
 interface PhotoData extends CameraPhoto {}
 const BookSlot: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUsernameAction}) => {
@@ -30,16 +36,18 @@ const BookSlot: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: se
 const timeslots = ['10-12pm','2pm-4pm','6pm-7pm']
   const login = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    if(!username) {
-      setUsernameError(true);
+
+    //ADD DATA TO DB
+
+    const db = firebase.firestore()
+    const data = {
+      date:'12-10-19',
+      image:image,
+      time:time
     }
-    
-    if(username) {
-      await setIsLoggedIn(true);
-      await setUsernameAction(username);
-      history.push('/tabs/schedule', {direction: 'none'});
-    }
+    let res = await db.collection('waste_collection_details').doc('751098867').set(data)
+
+    console.log(res)
   };
   const getPicture = async() => {
       // const res = await ImagePicker.getPictures({})
@@ -86,6 +94,19 @@ const timeslots = ['10-12pm','2pm-4pm','6pm-7pm']
   const getLocation = () => {
     // api.get('http://api.positionstack.com/v1/forward?access_key=bce98239614aaa6f7954015a64f6bb76')
   }
+  const DatePicker: DatePickerPluginInterface = Plugins.DatePickerPlugin as any;
+  const selectedTheme = "light";
+  const getDate = () => {
+    DatePicker
+    .present({
+      mode: "date",
+      locale: "pt_BR",
+      format: "dd/MM/yyyy",
+      date: "13/07/2019",
+      theme: selectedTheme,
+    })
+  .then((date) => setDate(date.value));
+  }
   return (
     <IonPage id="details-page">
       <IonHeader>
@@ -102,14 +123,14 @@ const timeslots = ['10-12pm','2pm-4pm','6pm-7pm']
           <IonList>
             <IonItem>
               <IonLabel position="stacked" color="primary">Select Date</IonLabel>
-              <IonInput name="username" type="text" value={date} spellCheck={false} autocapitalize="off" onIonChange={e => setDate(e.detail.value!)}
-                required>
-              </IonInput>
+              
+              <IonButton color="primary" onClick={()=>{getDate()}}>get Date</IonButton>
+
             </IonItem>
 
             {formSubmitted && usernameError && <IonText color="danger">
               <p className="ion-padding-start">
-                Name is required
+                Date is required
               </p>
             </IonText>}
 
@@ -123,23 +144,8 @@ const timeslots = ['10-12pm','2pm-4pm','6pm-7pm']
                     )}
               </IonSelect>
             </IonItem>
-            <IonItem>
-              <IonLabel position="stacked" color="primary">Use GPS</IonLabel>
-              <IonToggle checked={gpsEnable} onIonChange={e => setGpsEnabled(e.detail.checked)} />
+           
             
-            </IonItem>
-            { !gpsEnable && 
-            <IonItem>
-              <IonLabel position="stacked" color="primary">Location</IonLabel>
-              <IonTextarea name="text" value={location} spellCheck={false} autocapitalize="off" onIonChange={e => setLocation(e.detail.value!)}
-                required>
-              </IonTextarea>
-            </IonItem>}
-            { gpsEnable && 
-            <IonItem>
-              <IonLabel position="stacked" color="primary">Location</IonLabel>
-              <IonButton color="primary" onClick={()=>{getLocation()}}>Use Current Location</IonButton>
-            </IonItem>}
             <IonItem>
               <IonLabel position="stacked" color="primary">Picture</IonLabel>
               <IonButton color="primary" onClick={()=>{getPicture()}}>Get Picture</IonButton>
