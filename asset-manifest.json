@@ -3,8 +3,8 @@
     "static/js/0.b01c7302.chunk.js": "/cleanit/static/js/0.b01c7302.chunk.js",
     "static/js/0.b01c7302.chunk.js.map": "/cleanit/static/js/0.b01c7302.chunk.js.map",
     "main.css": "/cleanit/static/css/main.a343e6bc.chunk.css",
-    "main.js": "/cleanit/static/js/main.1a676837.chunk.js",
-    "main.js.map": "/cleanit/static/js/main.1a676837.chunk.js.map",
+    "main.js": "/cleanit/static/js/main.66e00421.chunk.js",
+    "main.js.map": "/cleanit/static/js/main.66e00421.chunk.js.map",
     "polyfills-css-shim.js": "/cleanit/static/js/polyfills-css-shim.bda2968a.chunk.js",
     "polyfills-css-shim.js.map": "/cleanit/static/js/polyfills-css-shim.bda2968a.chunk.js.map",
     "runtime-main.js": "/cleanit/static/js/runtime-main.7c9009e2.js",
@@ -141,7 +141,7 @@
     "static/js/68.29cb99bf.chunk.js": "/cleanit/static/js/68.29cb99bf.chunk.js",
     "static/js/68.29cb99bf.chunk.js.map": "/cleanit/static/js/68.29cb99bf.chunk.js.map",
     "index.html": "/cleanit/index.html",
-    "precache-manifest.b24736d5f4c3b1c8dcb972e504957283.js": "/cleanit/precache-manifest.b24736d5f4c3b1c8dcb972e504957283.js",
+    "precache-manifest.6aa55f80f47bfcf030b78decee5240fb.js": "/cleanit/precache-manifest.6aa55f80f47bfcf030b78decee5240fb.js",
     "service-worker.js": "/cleanit/service-worker.js",
     "static/css/6.69aeab2b.chunk.css.map": "/cleanit/static/css/6.69aeab2b.chunk.css.map",
     "static/css/main.a343e6bc.chunk.css.map": "/cleanit/static/css/main.a343e6bc.chunk.css.map",
@@ -158,6 +158,6 @@
     "static/css/6.69aeab2b.chunk.css",
     "static/js/6.eacdfaa1.chunk.js",
     "static/css/main.a343e6bc.chunk.css",
-    "static/js/main.1a676837.chunk.js"
+    "static/js/main.66e00421.chunk.js"
   ]
 }
