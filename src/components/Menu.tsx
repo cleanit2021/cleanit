@@ -11,19 +11,20 @@ import './Menu.css'
 
 const routes = {
   appPages: [
-    { title: 'Schedule', path: '/tabs/schedule', icon: calendarOutline },
-    { title: 'Speakers', path: '/tabs/speakers', icon: peopleOutline },
-    { title: 'Map', path: '/tabs/map', icon: mapOutline },
-    { title: 'About', path: '/tabs/about', icon: informationCircleOutline }
+    { title: 'Book A Slot', path: '/bookslot', icon: calendarOutline },
+    { title: 'Dashboard', path: '/dashboard', icon: peopleOutline },
+    { title: 'Fill Details', path: '/login', icon: person },
+    // { title: 'Map', path: '/tabs/map', icon: mapOutline },
+    // { title: 'About', path: '/tabs/about', icon: informationCircleOutline }
   ],
   loggedInPages: [
     { title: 'Account', path: '/account', icon: person },
-    { title: 'Support', path: '/support', icon: help },
+    // { title: 'Support', path: '/support', icon: help },
     { title: 'Logout', path: '/logout', icon: logOut }
   ],
   loggedOutPages: [
-    { title: 'Login', path: '/login', icon: logIn },
-    { title: 'Support', path: '/support', icon: help },
+   
+    // { title: 'Support', path: '/support', icon: help },
     { title: 'Signup', path: '/signup', icon: personAdd }
   ]
 };
@@ -66,7 +67,7 @@ const Menu: React.FC<MenuProps> = ({ darkMode, history, isAuthenticated, setDark
     <IonMenu  type="overlay" disabled={!menuEnabled} contentId="main">
       <IonContent forceOverscroll={false}>
         <IonList lines="none">
-          <IonListHeader>Conference</IonListHeader>
+          <IonListHeader>Waste Management App</IonListHeader>
           {renderlistItems(routes.appPages)}
         </IonList>
         <IonList lines="none">
