@@ -115,7 +115,7 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, 
                     setUsername={setUsername}
                   />;
                 }} />
-                <Route path="/" component={BookSlot} exact />
+                <Route path="/" component={Signup} exact />
               </IonRouterOutlet>
             </IonSplitPane>
           </IonReactRouter>
