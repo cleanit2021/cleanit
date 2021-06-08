@@ -4,10 +4,10 @@ Waste Collection App
 
 ## Team Members
 
-Anfas M A
-Nithin PS
-Aravind Anil
-Shaun
+* Anfas M A
+* Nithin PS
+* Aravind Anil
+* Shaun
 
 
 ## To STart
