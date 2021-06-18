@@ -1,0 +1,8 @@
+{
+  "appId": "com.waste.manage",
+  "appName": "Clean It",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Clean It",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
