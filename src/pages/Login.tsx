@@ -23,7 +23,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername}) => {
 
   const [username, setUserName] = useState('');
   const [pincode,setPincode] = useState('');
-  const [coord,setCoord] = useState({latitude:0,longitude:0});
+  const [coord,setCoord] = useState({});
   const [location,setLocation] = useState('');
   const [gpsEnable,setGpsEnabled] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -88,12 +88,22 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername}) => {
 
   };
   const getLocation = async() => {
-    const coordinates = await Geolocation.getCurrentPosition();
-    const {latitude,longitude} = coordinates.coords
-    setCoord({
-      latitude,longitude
-    })
-  console.log('Current position:', coordinates.coords);
+    Geolocation.getCurrentPosition().then(
+      (coordinates) => {
+        const lat= coordinates.coords.latitude || 0
+        const long = coordinates.coords.longitude || 0
+        const c = {
+          latitude: coordinates.coords.latitude,longitude:coordinates.coords.longitude
+        }
+        setCoord(c)
+      console.log('Current position:',coordinates.coords.latitude,coord);
+       
+      }
+    ).catch(e => {
+      console.log(e)
+    });
+    
+  // console.log('Current position:',coordinates.coords.latitude,coord);
     // api.get('http://api.positionstack.com/v1/forward?access_key=bce98239614aaa6f7954015a64f6bb76')
   }
   return (
@@ -149,7 +159,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername}) => {
               <IonButton color="primary" onClick={()=>{getLocation()}}>Use Current Location</IonButton>
             </IonItem>}
           </IonList>
-
+              {/* <IonButton onClick={()=>console.log} */}
           <IonRow>
             <IonCol>
               <IonButton disabled={loading} type="submit" expand="block" onClick={(e)=>login(e)}>Submit</IonButton>
