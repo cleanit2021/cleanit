@@ -87,7 +87,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername}) => {
 
     if(username) {
       // window.recaptchaVerifier = 
-      
+      firebase.auth().settings.appVerificationDisabledForTesting = true
       firebase.auth().signInWithPhoneNumber(
         '+91'+username,
         window.recaptchaVerifier
@@ -130,7 +130,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername}) => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton></IonMenuButton>
+            {/* <IonMenuButton></IonMenuButton> */}
           </IonButtons>
           <IonTitle>Signup</IonTitle>
         </IonToolbar>

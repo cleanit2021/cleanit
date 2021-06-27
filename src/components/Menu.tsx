@@ -10,15 +10,11 @@ import { setDarkMode } from '../data/user/user.actions';
 import './Menu.css'
 
 const routes = {
-  appPages: [
-    { title: 'Book A Slot', path: '/bookslot', icon: calendarOutline },
-    { title: 'Dashboard', path: '/dashboard', icon: peopleOutline },
-    { title: 'Edit Details', path: '/login', icon: person },
-    // { title: 'Map', path: '/tabs/map', icon: mapOutline },
-    // { title: 'About', path: '/tabs/about', icon: informationCircleOutline }
-  ],
+
   loggedInPages: [
     { title: 'Account', path: '/account', icon: person },
+    { title: 'Dashboard', path: '/dashboard', icon: peopleOutline },
+    { title: 'Edit Details', path: '/login', icon: person },
     // { title: 'Support', path: '/support', icon: help },
     { title: 'Logout', path: '/logout', icon: logOut }
   ],
@@ -68,10 +64,10 @@ const Menu: React.FC<MenuProps> = ({ darkMode, history, isAuthenticated, setDark
       <IonContent forceOverscroll={false}>
         <IonList lines="none">
           <IonListHeader>Waste Management App</IonListHeader>
-          {renderlistItems(routes.appPages)}
-        </IonList>
+          {/* {renderlistItems(routes.appPages)} */}
+        {/* </IonList>
         <IonList lines="none">
-          <IonListHeader>Account</IonListHeader>
+          <IonListHeader>Account</IonListHeader> */}
           {isAuthenticated ? renderlistItems(routes.loggedInPages) : renderlistItems(routes.loggedOutPages)}
           <IonItem>
             <IonIcon slot="start" icon={moonOutline}></IonIcon>

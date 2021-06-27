@@ -28,10 +28,9 @@ import { AppContextProvider } from './data/AppContext';
 import { loadConfData } from './data/sessions/sessions.actions';
 import { setIsLoggedIn, setUsername, loadUserData } from './data/user/user.actions';
 import Account from './pages/Account';
-import Login from './pages/Login';
+import Login from './pages/DetailsPage';
 import Signup from './pages/Signup';
 import Support from './pages/Support';
-import Tutorial from './pages/Tutorial';
 import { Schedule } from "./models/Schedule";
 import RedirectToLogin from './components/RedirectToLogin';
 import Dashboard from './pages/Dashboard';
@@ -105,7 +104,6 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, 
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/support" component={Support} />
-                <Route path="/tutorial" component={Tutorial} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/selectfour" component={SelectFour} />
                 <Route path="/bookslot" component={BookSlot} />

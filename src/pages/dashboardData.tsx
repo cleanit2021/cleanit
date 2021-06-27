@@ -24,6 +24,8 @@ export const dashboard = {
         ]
     }
 }
+const food = 'https://www.sustainweb.org/resources/images/food_2012/Food-waste-eco-watch-FW.jpg'
+
 export const dashboard_data_home = [
     {
         title:'Food Waste',
@@ -31,7 +33,7 @@ export const dashboard_data_home = [
             {
                 text:'Food',
                 sub:'',
-                img:'https://static.thenounproject.com/png/2130854-200.png'
+                img:food
             }
         ]
     },

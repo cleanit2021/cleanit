@@ -7,9 +7,9 @@ import { RouteComponentProps } from 'react-router';
 import { Plugins, CameraResultType, CameraSource ,CameraPhoto} from '@capacitor/core';
 import firebase from 'firebase/app'
 import 'firebase/firestore';
-import { camera, pin, wifi, wine, warning, walk } from 'ionicons/icons';
 import { getUserData } from '../data/dataApi';
-
+import { Modal } from './Modal';
+import {useLocation} from "react-router-dom";
 
 const { Camera ,Dialog,Toast} = Plugins;
 interface OwnProps extends RouteComponentProps {}
@@ -23,7 +23,7 @@ interface DispatchProps {
 interface LoginProps extends OwnProps,  DispatchProps { }
 interface PhotoData extends CameraPhoto {}
 const BookSlot: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUsernameAction}) => {
-  const sampleimageurl = 'https://img-getpocket.cdn.mozilla.net/296x148/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fpocket-image-cache.com%2F1200x%2Ffilters%3Ano_upscale()%3Aformat(jpg)%3Aextract_cover()%2Fhttps%253A%252F%252Fpocket-syndicated-images.s3.amazonaws.com%252Farticles%252F5204%252F1595959480_GettyImages-129164329.jpgcrop.jpg22.jpg'
+  const  sampleimageurl = 'https://img-getpocket.cdn.mozilla.net/296x148/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fpocket-image-cache.com%2F1200x%2Ffilters%3Ano_upscale()%3Aformat(jpg)%3Aextract_cover()%2Fhttps%253A%252F%252Fpocket-syndicated-images.s3.amazonaws.com%252Farticles%252F5204%252F1595959480_GettyImages-129164329.jpgcrop.jpg22.jpg'
   const [username, setUsername] = useState('');
   const [time, setTime] = useState('');
   const [date,setDate] = useState('2021-06-15');
@@ -36,7 +36,8 @@ const BookSlot: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: se
   const [passwordError, setPasswordError] = useState(false);
   const [loading,setLoading] = useState(false)
   const [phone,setPhone] = useState('')
-
+  const [showModal,setShowModal] = useState(false)
+ 
   useEffect(()=>{
     async function getData() {
       let res = await getUserData()
@@ -46,6 +47,11 @@ const BookSlot: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: se
     getData()
   },[getUserData])
 
+  useEffect(()=>{
+
+  },[])
+  const search = useLocation().search;    
+  const query = new URLSearchParams(search).get("query");
   async function alert(){
    try{
     await Dialog.alert({
@@ -75,15 +81,29 @@ useEffect(()=>{
     const data = {
       date:'12-10-19',
       image:image,
-      time:time
+      time:time,
+      category:query
     }
     try {
+      var docRef = db.collection('waste_collection_details').doc(phone)
 
-      let res = await db.collection('waste_collection_details').doc(phone).set(data)
+      docRef.get().then(async(doc) => {
+          if(doc.exists) {
+            let doc_data = doc.data()
+            let bookings = doc_data.bookings
+            bookings.push(data)
+            
+            let res = await db.collection('waste_collection_details').doc(phone).update({bookings})
 
-      console.log(res)
-      alert()
-      history.push('/dashboard', {direction: 'none'});
+          }else{
+            let res = await db.collection('waste_collection_details').doc(phone).set({bookings:[data]})
+
+          }
+        })
+
+      setLoading(false)// alert()
+      setShowModal(true)
+      
     }catch(e) {
       console.log(e)
     }
@@ -92,9 +112,7 @@ useEffect(()=>{
     
   };
   const getPicture = async() => {
-      // const res = await ImagePicker.getPictures({})
       const res = addImage(CameraSource.Photos)
-      console.log("picture",res)
   }
   const addImage  = async(source: CameraSource) => {
     try{
@@ -105,7 +123,6 @@ useEffect(()=>{
         source
       });
       if(images){
-        console.log("imgae",images)
         setImage(images)
       }
     }
@@ -165,11 +182,8 @@ useEffect(()=>{
             </IonItem>
             {image!==null && 
             <div style={{margin:'20px'}}>
-              {/* <IonIcon  */}
               <img style={{marginTop:'10px'}} src={image.dataUrl}/></div>}
-              {/* <div style={{margin:'20px'}}>
-  <img style={{marginTop:'10px'}} src={sampleimageurl}/></div>
-               */}
+              
           </IonList>
 
           <IonRow>
@@ -180,6 +194,8 @@ useEffect(()=>{
               <IonButton routerLink="/signup" color="light" expand="block">Signup</IonButton>
             </IonCol> */}
           </IonRow>
+          <Modal openModal={showModal} text={`You have selected ${time} on ${date}`} closeModal={()=>history.push('/dashboard', {direction: 'none'})}/>
+
         </form>
 
       </IonContent>
