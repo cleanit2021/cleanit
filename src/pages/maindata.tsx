@@ -8,5 +8,5 @@ export const maindata = [
     {key:'Home',img:home_icon},
     {key:'Hospital',img:hospital_icon},
     {key:'Industry',img:industry_icon},
-    {key:'Shops',img:other}
+    {key:'Hotels and Shops',img:other}
 ]

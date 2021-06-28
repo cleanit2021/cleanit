@@ -1,3 +1,5 @@
+import { aluminium, aluminium_pouch, bloodbankwaste, blue, brass, chipboard, condom, copper, crt_monitor, diapers, drum_waste, hdpe, idcard, iron_sheets, ldpe, mask_and_cap, metal_waste, motherboard, needle_waste, paper_waste, pete, plastic_waste, polystyrene, polythene, polythene_cover, pp, pvc, red, red_gypsum, sanitary_napkins, sludge, sponge_waste, steel, tampons, tin, type1, type2, type3, type4, type5, type6, type7, ups, used_silica_powder, white_gypsum, yellow } from "./pictures"
+
 export const dashboard = {
     "dashboard":{
         "heading":[
@@ -68,22 +70,22 @@ export const dashboard_data_home = [
             {
                 text:'Diapers',
                 sub:'',
-                img:''
+                img:diapers
             },
             {
                 text:'Sanitary Napkins',
                 sub:'',
-                img:''
+                img:sanitary_napkins
             },
             {
                 text:'Condoms',
                 sub:'',
-                img:''
+                img:condom
             },
             {
                 text:'Tampons',
                 sub:'',
-                img:''
+                img:tampons
             }
         ]
     },
@@ -93,37 +95,37 @@ export const dashboard_data_home = [
             {
                 text:'Type 1',
                 sub:'Major Appliances',
-                img:''
+                img:type1
             },
             {
                 text:'Type 2',
                 sub:'Small appliances',
-                img:''
+                img:type2
             },
             {
                 text:'Type 3',
                 sub:'Computer and telecommunication appliances',
-                img:''
+                img:type3
             },
             {
                 text:'Type 4',
                 sub:'Consumer electronics',
-                img:''
+                img:type4
             },
             {
                 text:'Type 5',
                 sub:'Lighting devices',
-                img:''
+                img:type5
             },
             {
                 text:'Type 6',
                 sub:'Electrical and electronic tools',
-                img:''
+                img:type6
             },
             {
                 text:'Type 7',
                 sub:'Toys, leisure',
-                img:''
+                img:type7
             }
         ]
     },
@@ -133,37 +135,32 @@ export const dashboard_data_home = [
             {
                 text:'Copper',
                 sub:'',
-                img:''
+                img:copper
             },
             {
                 text:'Brass',
                 sub:'',
-                img:''
+                img:brass
             },
             {
                 text:'Steel',
                 sub:'',
-                img:''
+                img:steel
             },
             {
                 text:'Aluminium',
                 sub:'',
-                img:''
+                img:aluminium
             }, 
             {
                 text:'Iron Sheet',
                 sub:'',
-                img:''
+                img:iron_sheets
             },
             {
                 text:'Tin',
                 sub:'',
-                img:''
-            },
-            {
-                text:'Copper',
-                sub:'',
-                img:''
+                img:tin
             },
             {
                 text:'Others',
@@ -178,32 +175,32 @@ export const dashboard_data_home = [
             {
                 text:'PETE',
                 sub:'Polyethylene Terephthalate',
-                img:''
+                img:pete
             },
             {
                 text:'HDPE',
                 sub:'High Density Polyethylene',
-                img:''
+                img:hdpe
             },
             {
                 text:'PVC',
                 sub:'Polyvinyl Chloride',
-                img:''
+                img:pvc
             },
             {
                 text:'LDPE',
                 sub:'Low-Density Polyethylene',
-                img:''
+                img:ldpe
             },
             {
                 text:'PP',
                 sub:'Polypropylene',
-                img:''
+                img:pp
             },
             {
                 text:'POLYSTYRENE',
                 sub:'Polystyrene',
-                img:''
+                img:polystyrene
             },
             {
                 text:'Other',
@@ -224,65 +221,217 @@ export const dashboard_data_home = [
     }
 ]
 
-const hospital_waste = [
+export const hospital_waste = [
     {
         title:'Green',
         items:[
-            {text:'Green',img:''},
+            {text:'Green', sub:'',img:''},
         ]
     },
     {
         title:'Blue',
         items:[
-            {text:'Blue',img:''},
+            {text:'Blue', sub:'',img:blue},
         ]
     }, {
         title:'Yellow',
         items:[
-            {text:'Yellow',img:''},
+            {text:'Yellow', sub:'',img:yellow},
         ]
     }, {
         title:'Red',
         items:[
-            {text:'Red',img:''},
+            {text:'Red', sub:'',img:red},
         ]
     }, {
         title:'Rose',
         items:[
-            {text:'Rose',img:''},
+            {text:'Rose', sub:'',img:''},
         ]
     }
+]
+export const hotel_waste = [
+    {
+        title:'Food Waste',
+        items:[
+            {text:'Food Waste', sub:'',img:food},
+        ]
+    },
+    {
+        title:'Paper Waste',
+        items:[
+            {text:'Paper Waste', sub:'',img:paper_waste},
+        ]
+    }, {
+        title:'Plastic Waste',
+        items:[
+            {text:'Plastic Waste', sub:'',img:plastic_waste},
+        ]
+    }, {
+        title:'Cardboard',
+        items:[
+            {text:'Cardboard', sub:'',img:red},
+        ]
+    },
+    {
+        title:'Glass',
+        items:[
+            {text:'Glass', sub:'',img:''},
+        ]
+    },
+    {
+        title:'Metal',
+        items:[
+            {text:'Metal', sub:'',img:''},
+        ]
+    },
+    {
+        title:'Glass',
+        items:[
+            {text:'Cloth', sub:'',img:''},
+        ]
+    }
+]
+export const industrial_waste = [
+    {
+        title:'Keltron',
+        items:[
+            {text:'Electronic Waste',items:[
+                {text:'Motherboard',img:motherboard},
+                {text:'Chipboard',img:chipboard},
+                {text:'CRT Monitors',img:crt_monitor},
+                {text:'UPD',img:ups},
+            ]}
+        ]
+    },
+    {
+        title:'Travancore Titanium',
+        items:[
+            {text:'Bi-Products',items:[
+                {text:'White Gypsum',img:white_gypsum},
+                {text:'Red Gypsum',img:red_gypsum},
+                {text:'Sludge',img:sludge},
+            ]},
+            {text:'Food Waste',items:[
+                {text:'Food Waste',img:food},
+            ]},
+            {text:'Paper Waste',items:[
+                {text:'Paper Waste',img:paper_waste},
+            ]},
+            {text:'Plastic Waste',items:[
+                {text:'Plastic Waste',img:plastic_waste},
+            ]}
+        ]
+    },
+    {
+        title:'HLL Akkulam',
+        items:[
+            {text:'PVC',items:[
+                {text:'PVC',img:pvc},
+            ]},
+            {text:'Component',items:[
+                {text:'Component',img:''},
+            ]},
+            {text:'Metal Waste',items:[
+                {text:'Metal Waste',img:metal_waste},
+            ]},
+            {text:'ID Card',items:[
+                {text:'ID Card',img:idcard},
+            ]},
+            {text:'Plastic Waste',items:[
+                {text:'Plastic Waste',img:plastic_waste},
+            ]},
+            {text:'Carton Waste',items:[
+                {text:'Carton Waste',img:''},
+            ]},
+            {text:'Sutore',items:[
+                {text:'Sutore',img:''},
+            ]}
+        ]
+    },
+    {
+        title:'HLL Peroorkada',
+        items:[
+            {text:'Condom Waste',items:[
+                {text:'Dry Condom',img:condom},
+                {text:'Oil Condom',img:condom},
+                {text:'Wet Condom',img:condom},
+            ]},
+            {text:'Foil Waste',items:[
+                {text:'Foil Waste',img:aluminium},
+            ]},
+            {text:'Polythene Cover',items:[
+                {text:'Polythene Cover',img:polythene_cover},
+            ]},
+            {text:'Plastic Waste',items:[
+                {text:'Plastic Crate',img:plastic_waste},
+                {text:'Plastic Bottle',img:plastic_waste},
+                {text:'Plastic Pipe',img:plastic_waste},
+            ]},
+            {text:'Carton Waste',items:[
+                {text:'Consumer carton',img:''},
+                {text:'Dispenser',img:''},
+                {text:'Valet',img:''},
+                {text:'Master carton',img:''},
+            ]},
+            {text:'Used Silica Powder',items:[
+                {text:'Used Silica Powder',img:used_silica_powder}
+            ]},
+            {text:'Metal Waste',items:[
+                {text:'Aluminium',img:aluminium},
+                {text:'Iron',img:iron_sheets},
+                {text:'Valet',img:''}
+            ]},
+            {text:'Mask and Cap',items:[
+                {text:'Mask and Cap',img:mask_and_cap}
+            ]},
+            {text:'Drum Waste',items:[
+                {text:'Drum Waste',img:drum_waste}
+            ]},
+            {text:'Sponge Waste ',items:[
+                {text:'Sponge Waste',img:sponge_waste}
+            ]},
+            
+        ]
+    },
+    {
+        title:'Terumo Penpol',
+        items:[
+            {text:'Blood Bank Waste',items:[
+                {text:'Wet',img:bloodbankwaste},
+                {text:'Dry',img:bloodbankwaste},
+            ]},
+            {text:'Needle Waste',items:[
+                {text:'Needle Waste',img:needle_waste},
+              
+            ]},
+            {text:'Polythene Waste',items:[
+                {text:'Polythene Waste',img:polythene},
+                
+            ]},
+            {text:'Thick Polythene',items:[
+                {text:'Thick Polythene',img:polythene},
+                
+            ]},
+            {text:'Plastic Waste',items:[
+                {text:'Plastic Waste',img:plastic_waste},
+                
+            ]},{text:'Metal Waste',items:[
+                {text:'Metal Waste',img:metal_waste},
+               
+            ]},
+            {text:'Carton',items:[
+                {text:'Carton',img:''},
+                
+            ]},
+            {text:'Aluminium pouch',items:[
+                {text:'Aluminium pouch',img:aluminium_pouch},
+                
+            ]}
+        ]
+    },
 ]
 
-const industrial_waste = [
-    {
-        title:'Green',
-        items:[
-            {text:'Green',img:''},
-        ]
-    },
-    {
-        title:'Blue',
-        items:[
-            {text:'Blue',img:''},
-        ]
-    }, {
-        title:'Yellow',
-        items:[
-            {text:'Yellow',img:''},
-        ]
-    }, {
-        title:'Red',
-        items:[
-            {text:'Red',img:''},
-        ]
-    }, {
-        title:'Rose',
-        items:[
-            {text:'Rose',img:''},
-        ]
-    }
-]
 
 
 // Titanium
