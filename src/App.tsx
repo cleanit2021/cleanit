@@ -37,7 +37,15 @@ import Dashboard from './pages/Dashboard';
 import SelectFour from './pages/SelectFour'
 import firebase from "firebase/app";
 import BookSlot from './pages/BookSlot';
+import { Capacitor } from '@capacitor/core';
 import './app.scss'
+import { Plugins, PushNotification, PushNotificationToken, PushNotificationActionPerformed } from '@capacitor/core';
+
+const { PushNotifications } = Plugins;
+const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
+if(isPushNotificationsAvailable){
+  PushNotifications.register();
+}
 
 declare global {
   interface Window { recaptchaVerifier: any;

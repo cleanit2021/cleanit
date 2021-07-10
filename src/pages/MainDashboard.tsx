@@ -6,7 +6,8 @@ import {MainDashboardCard} from './MainDashboardCard'
 interface CardProps {
     array: {
         key: string; 
-        img: string
+        img: string;
+        url:string;
    }[]
   }
 
@@ -19,7 +20,7 @@ export const MainDashboard:React.FC<CardProps> = ({array}) => {
                                 {array.map(
                                     item => 
                                     <IonCol size="6">
-                                        <MainDashboardCard img={item.img} text={item.key} />
+                                        <MainDashboardCard url={item.url} img={item.img} text={item.key} />
                                     </IonCol>
                                 )}
                              </IonRow>

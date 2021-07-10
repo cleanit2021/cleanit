@@ -1,4 +1,4 @@
-import { aluminium, aluminium_pouch, bloodbankwaste, blue, brass, chipboard, condom, copper, crt_monitor, diapers, drum_waste, hdpe, idcard, iron_sheets, ldpe, mask_and_cap, metal_waste, motherboard, needle_waste, paper_waste, pete, plastic_waste, polystyrene, polythene, polythene_cover, pp, pvc, red, red_gypsum, sanitary_napkins, sludge, sponge_waste, steel, tampons, tin, type1, type2, type3, type4, type5, type6, type7, ups, used_silica_powder, white_gypsum, yellow } from "./pictures"
+import { aluminium, aluminium_pouch, bloodbankwaste, blue, brass, carton, chipboard, condom, copper, crt_monitor, diapers, drum_waste, green, hdpe, hll_peroorkada, idcard, iron_sheets, keltron, ldpe, mask_and_cap, metal_waste, motherboard, needle_waste, newspaper, notebook, paper_waste, pete, plastic_waste, polystyrene, polythene, polythene_cover, pp, pvc, red, red_gypsum, sanitary_napkins, sludge, sponge_waste, steel, tampons, terumo_penpol, tin, titanium_trivandrum, type1, type2, type3, type4, type5, type6, type7, ups, used_silica_powder, white, white_gypsum, yellow } from "./pictures"
 
 export const dashboard = {
     "dashboard":{
@@ -55,12 +55,12 @@ export const dashboard_data_home = [
             {
                 text:'NewsPaper',
                 sub:'',
-                img:''
+                img:newspaper
             },
             {
                 text:'Notebook',
                 sub:'',
-                img:''
+                img:notebook
             }
         ]
     },
@@ -225,7 +225,7 @@ export const hospital_waste = [
     {
         title:'Green',
         items:[
-            {text:'Green', sub:'',img:''},
+            {text:'Green', sub:'',img:green},
         ]
     },
     {
@@ -244,9 +244,9 @@ export const hospital_waste = [
             {text:'Red', sub:'',img:red},
         ]
     }, {
-        title:'Rose',
+        title:'White',
         items:[
-            {text:'Rose', sub:'',img:''},
+            {text:'White', sub:'',img:white},
         ]
     }
 ]
@@ -282,11 +282,11 @@ export const hotel_waste = [
     {
         title:'Metal',
         items:[
-            {text:'Metal', sub:'',img:''},
+            {text:'Metal', sub:'',img:metal_waste},
         ]
     },
     {
-        title:'Glass',
+        title:'Cloth',
         items:[
             {text:'Cloth', sub:'',img:''},
         ]
@@ -295,6 +295,7 @@ export const hotel_waste = [
 export const industrial_waste = [
     {
         title:'Keltron',
+        img:keltron,
         items:[
             {text:'Electronic Waste',items:[
                 {text:'Motherboard',img:motherboard},
@@ -306,6 +307,7 @@ export const industrial_waste = [
     },
     {
         title:'Travancore Titanium',
+        img:titanium_trivandrum,
         items:[
             {text:'Bi-Products',items:[
                 {text:'White Gypsum',img:white_gypsum},
@@ -325,12 +327,10 @@ export const industrial_waste = [
     },
     {
         title:'HLL Akkulam',
+        img:hll_peroorkada,
         items:[
             {text:'PVC',items:[
                 {text:'PVC',img:pvc},
-            ]},
-            {text:'Component',items:[
-                {text:'Component',img:''},
             ]},
             {text:'Metal Waste',items:[
                 {text:'Metal Waste',img:metal_waste},
@@ -342,7 +342,7 @@ export const industrial_waste = [
                 {text:'Plastic Waste',img:plastic_waste},
             ]},
             {text:'Carton Waste',items:[
-                {text:'Carton Waste',img:''},
+                {text:'Carton Waste',img:carton},
             ]},
             {text:'Sutore',items:[
                 {text:'Sutore',img:''},
@@ -351,6 +351,7 @@ export const industrial_waste = [
     },
     {
         title:'HLL Peroorkada',
+        img:hll_peroorkada,
         items:[
             {text:'Condom Waste',items:[
                 {text:'Dry Condom',img:condom},
@@ -369,10 +370,10 @@ export const industrial_waste = [
                 {text:'Plastic Pipe',img:plastic_waste},
             ]},
             {text:'Carton Waste',items:[
-                {text:'Consumer carton',img:''},
-                {text:'Dispenser',img:''},
-                {text:'Valet',img:''},
-                {text:'Master carton',img:''},
+                {text:'Consumer carton',img:carton},
+                {text:'Dispenser',img:carton},
+                {text:'Valet',img:carton},
+                {text:'Master carton',img:carton},
             ]},
             {text:'Used Silica Powder',items:[
                 {text:'Used Silica Powder',img:used_silica_powder}
@@ -396,6 +397,7 @@ export const industrial_waste = [
     },
     {
         title:'Terumo Penpol',
+        img:terumo_penpol,
         items:[
             {text:'Blood Bank Waste',items:[
                 {text:'Wet',img:bloodbankwaste},

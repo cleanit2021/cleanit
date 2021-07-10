@@ -7,15 +7,15 @@ import {dashboard_data_home} from './dashboardData'
 interface CardProps {
     img:string,
     text:string
-    // sub:string
+    url:string
   }
 
-export const MainDashboardCard:React.FC<CardProps> = ({text,img}) => {
+export const MainDashboardCard:React.FC<CardProps> = ({text,img,url}) => {
    
     return(
         <div>
             <IonCard className="green-card" 
-            href={`/dashboard?category=${text}`}
+            href={`/dashboard?category=${url}`}
             >
                 <img alt="sample" width="50%" style={{margin:'auto',display:'block'}} height="50%" src={img} className="img-dash"/>
                 {/* {pin} */}

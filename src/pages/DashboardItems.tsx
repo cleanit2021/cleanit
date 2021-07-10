@@ -7,15 +7,16 @@ interface Props {
     prop: {
          title: string; 
          items: { text: string; img: string;sub:string; }[]
-    }[]
+    }[],
+    checkfn:Function;
   }
 
-export const DashboardItems:React.FC<Props> = ({prop}) => {
+export const DashboardItems:React.FC<Props> = ({prop,checkfn}) => {
     return(
         <IonList>
             {prop.map(
                 i => 
-                    <IonItemGroup key={'i.title'}>
+                    <IonItemGroup key={i.title}>
                         <IonItemDivider sticky>
                             <IonLabel>
                                 {i.title}
@@ -25,8 +26,8 @@ export const DashboardItems:React.FC<Props> = ({prop}) => {
                             <IonRow>
                                 {i.items.map(
                                     item => 
-                                    <IonCol size="4">
-                                        <Card img={item.img} text={item.text} sub={item.sub}/>
+                                    <IonCol key={'23'+item.text} size="4">
+                                        <Card checkfn={checkfn} fn={()=>{}} type="a" img={item.img} text={item.text} sub={item.sub}/>
                                     </IonCol>
                                 )}
                              </IonRow>

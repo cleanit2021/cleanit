@@ -25,6 +25,7 @@ interface PhotoData extends CameraPhoto {}
 const BookSlot: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUsernameAction}) => {
   const  sampleimageurl = 'https://img-getpocket.cdn.mozilla.net/296x148/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fpocket-image-cache.com%2F1200x%2Ffilters%3Ano_upscale()%3Aformat(jpg)%3Aextract_cover()%2Fhttps%253A%252F%252Fpocket-syndicated-images.s3.amazonaws.com%252Farticles%252F5204%252F1595959480_GettyImages-129164329.jpgcrop.jpg22.jpg'
   const [username, setUsername] = useState('');
+  const [description,setDescription] = useState('')
   const [time, setTime] = useState('');
   const [date,setDate] = useState('2021-06-15');
   const [coord,setCoord] = useState('');
@@ -82,7 +83,8 @@ useEffect(()=>{
       date:'12-10-19',
       image:image,
       time:time,
-      category:query
+      category:query,
+      description
     }
     try {
       var docRef = db.collection('waste_collection_details').doc(phone)
@@ -147,12 +149,13 @@ useEffect(()=>{
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <IonLabel style={{color:"lightgray"}} color="lightgray" position="stacked">{ `You have selected `+ query }</IonLabel>
 
         <form noValidate onSubmit={login}>
           <IonList>
             <IonItem>
               <IonLabel position="stacked" color="primary">Select Date</IonLabel>
-              <IonDatetime min={'2021-06-15'} max={'2025-01-01'} value={date} onIonChange={e => setDate(e.detail.value!)}/>
+              <IonDatetime min={'2021-07-11'} max={'2025-01-01'} value={date} onIonChange={e => setDate(e.detail.value!)}/>
               
             </IonItem>
 
@@ -173,7 +176,13 @@ useEffect(()=>{
               </IonSelect>
             </IonItem>
            
-            
+            {query==='Others' && <IonItem>
+              <IonLabel position="stacked" color="primary">Enter description about Type of Waste</IonLabel>
+              <IonInput name="username" type="text" value={description} spellCheck={false} autocapitalize="off" onIonChange={e => setDescription(e.detail.value!)}
+                required>
+                  
+              </IonInput>
+            </IonItem>}
             <IonItem>
               <IonLabel position="stacked" color="primary">Picture</IonLabel>
               <IonButton style={{borderRadius:0}} color="primary" onClick={()=>{getPicture()}}>
