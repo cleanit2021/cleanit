@@ -122,7 +122,7 @@ useEffect(()=>{
         quality: 60,
         allowEditing: true,
         resultType: CameraResultType.DataUrl,
-        source
+        source:CameraSource.Prompt
       });
       if(images){
         setImage(images)
@@ -188,6 +188,7 @@ useEffect(()=>{
               <IonButton style={{borderRadius:0}} color="primary" onClick={()=>{getPicture()}}>
                 {/* <IonIcon name="camera"/> */}
                 Upload Picture</IonButton>
+                
             </IonItem>
             {image!==null && 
             <div style={{margin:'20px'}}>

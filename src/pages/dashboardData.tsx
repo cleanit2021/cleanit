@@ -423,7 +423,7 @@ export const industrial_waste = [
                
             ]},
             {text:'Carton',items:[
-                {text:'Carton',img:''},
+                {text:'Carton',img:carton},
                 
             ]},
             {text:'Aluminium pouch',items:[

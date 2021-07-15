@@ -236,7 +236,7 @@ const getHeading = ( category:any ) => {
           onDismissModal={() => setShowFilterModal(false)}
         />
       </IonModal>
-      <IonModal isOpen={category==='Home' && !showHome}>
+      <IonModal isOpen={category==='home' && !showHome}>
         <IonInfiniteScrollContent>
         <h6>Seggragation Instructions</h6>
         <IonList>
